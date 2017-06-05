@@ -429,7 +429,7 @@ function upload($source, $destination, array $config = [])
     } else {
         $sshArguments = $host->getSshArguments()->getCliArguments();
         if (empty($sshArguments) === false) {
-            $config['options'] = ["-e 'ssh $sshArguments'"];
+            $config['options'][] = "-e 'ssh $sshArguments'";
         }
         $rsync->call($host->getHostname(), $source, "$host:$destination", $config);
     }
